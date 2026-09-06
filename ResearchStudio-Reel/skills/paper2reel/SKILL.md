@@ -43,6 +43,12 @@ section interactions:
 - double-clicking a poster section opens a large modal.
 - clicking or double-clicking the poster title opens the full-paper modal.
 
+Method focus cards keep their `data-section="method-1"…"method-N"` identities.
+Use a card's own alignment entry when present; otherwise its hover/double-click
+interaction opens the canonical `method` video, blog, and slides. Highlight the
+actual clicked card, including under poster scaling and historical raster
+overlays. Do not rename cards or invent subsection clips to make them clickable.
+
 The modal must use the section-media layout: video with baked Bottom Bar
 subtitles on the left, blog on the right, EN/中文 switching, slide thumbnails
 below the video, and a draggable splitter. Do not replace this with a Poster / Slides / Video /

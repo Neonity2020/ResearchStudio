@@ -265,8 +265,9 @@
   .msub .msub-h { display: flex; align-items: center; gap: 0.4em; margin: 0 0 0.35em 0;
     font-size: 1.05em; line-height: 1.15; }
   .msub .msub-h .msub-t { margin: 0; font-size: 1em; font-weight: 800; color: var(--accent); }
-  .msub .msub-h .n { flex: 0 0 auto; width: 1.5em; height: 1.5em; border-radius: 50%;
-    background: var(--accent); color: #fff; font-size: 0.8em; font-weight: 800;
+  .msub .msub-h .n { flex: 0 0 auto; width: 1.5em; height: 1.5em; border-radius: 0.2em;
+    background: #fff; color: var(--accent); border: 0.08em solid currentColor;
+    box-sizing: border-box; font-size: 0.8em; font-weight: 800;
     display: flex; align-items: center; justify-content: center; }
   .msub .msub-h .k { margin-left: auto; font-size: 0.62em; font-weight: 600;
     font-style: italic; color: var(--muted, #5b6572); }
@@ -1149,7 +1150,7 @@
            to match THIS paper's method structure; every card must read FULL (slack). -->
       <div class="msubs">
         <div class="section msub d1" data-section="method-1">
-          <div class="msub-h"><span class="n">1</span><h3 class="msub-t">{{METHOD_SUB1_TITLE}}</h3><span class="k">{{METHOD_SUB1_KICKER}}</span></div>
+          <div class="msub-h"><span class="n">A</span><h3 class="msub-t">{{METHOD_SUB1_TITLE}}</h3><span class="k">{{METHOD_SUB1_KICKER}}</span></div>
           <ul>
             <li>{{METHOD_SUB1_1}}</li>
             <li>{{METHOD_SUB1_2}}</li>
@@ -1157,16 +1158,16 @@
           </ul>
         </div>
         <div class="section msub d2" data-section="method-2">
-          <div class="msub-h"><span class="n">2</span><h3 class="msub-t">{{METHOD_SUB2_TITLE}}</h3><span class="k">{{METHOD_SUB2_KICKER}}</span></div>
+          <div class="msub-h"><span class="n">B</span><h3 class="msub-t">{{METHOD_SUB2_TITLE}}</h3><span class="k">{{METHOD_SUB2_KICKER}}</span></div>
           <div class="msteps"><div class="s">{{STEP_1}}</div><div class="a">&rarr;</div><div class="s">{{STEP_2}}</div><div class="a">&rarr;</div><div class="s">{{STEP_3}}</div><div class="a">&rarr;</div><div class="s">{{STEP_4}}</div><div class="a">&rarr;</div><div class="s">{{STEP_5}}</div></div>
           <p>{{METHOD_SUB2_BODY}}</p>
         </div>
         <div class="section msub d3" data-section="method-3">
-          <div class="msub-h"><span class="n">3</span><h3 class="msub-t">{{METHOD_SUB3_TITLE}}</h3><span class="k">{{METHOD_SUB3_KICKER}}</span></div>
+          <div class="msub-h"><span class="n">C</span><h3 class="msub-t">{{METHOD_SUB3_TITLE}}</h3><span class="k">{{METHOD_SUB3_KICKER}}</span></div>
           <p>{{METHOD_SUB3_BODY}}</p>
         </div>
         <div class="section msub d4" data-section="method-4">
-          <div class="msub-h"><span class="n">4</span><h3 class="msub-t">{{METHOD_SUB4_TITLE}}</h3><span class="k">{{METHOD_SUB4_KICKER}}</span></div>
+          <div class="msub-h"><span class="n">D</span><h3 class="msub-t">{{METHOD_SUB4_TITLE}}</h3><span class="k">{{METHOD_SUB4_KICKER}}</span></div>
           <ul>
             <li>{{METHOD_SUB4_1}}</li>
             <li>{{METHOD_SUB4_2}}</li>
