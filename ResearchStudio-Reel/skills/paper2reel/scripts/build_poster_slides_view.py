@@ -648,7 +648,7 @@ function loadAndPlayClip(src, startAt) {
     else video.addEventListener('loadedmetadata', playNow, {once:true});
   }
 }
-function openSection(id) {
+function openSection(id, posterTarget = null) {
   const sec = sections.get(id);
   if (!sec) return;
   current = sec;
@@ -663,7 +663,7 @@ function openSection(id) {
   overlay.classList.add('open');
   overlay.setAttribute('aria-hidden', 'false');
   loadAndPlayClip(sec.clip || artifactVideo(), 0);
-  flashPosterSection(id);
+  flashPosterSection(id, posterTarget);
 }
 function closeModal() { overlay.classList.remove('open'); overlay.setAttribute('aria-hidden', 'true'); video.pause(); }
 function playSlide(index) {
@@ -742,7 +742,8 @@ function posterTargetId(el) {
   if (el.matches('button, a, .listen-btn, .listen-title, .listen-all')) return '';
   if (el.closest('.titlebar')) return '';
   const id = el.getAttribute('data-section') || '';
-  return sections.has(id) ? id : '';
+  if (sections.has(id)) return id;
+  return /^method-\d+$/.test(id) && sections.has('method') ? 'method' : '';
 }
 function paperReelProxyId(kind) {
   return kind === 'flash' ? 'paperReelFlashProxy' : 'paperReelHoverProxy';
@@ -871,7 +872,7 @@ function bindPosterTarget(state, el) {
     if (!currentId) return;
     ev.preventDefault();
     ev.stopPropagation();
-    openSection(currentId);
+    openSection(currentId, el);
   });
 }
 function bindPosterTargetTree(state, node) {
@@ -1021,11 +1022,12 @@ function injectPosterTools() {
   schedulePosterToolsRetry(ready ? POSTER_HOOK_STEADY_RETRY_MS : POSTER_HOOK_PENDING_RETRY_MS);
   return ready;
 }
-function flashPosterSection(id) {
+function flashPosterSection(id, posterTarget = null) {
   const doc = posterDoc();
   if (!doc) return;
   const selector = id === 'title' ? '.titlebar' : `[data-section="${id.replace(/"/g, '\\"')}"]`;
-  const el = doc.querySelector(selector);
+  const el = posterTarget && posterTarget.ownerDocument === doc && posterTarget.isConnected && posterTargetId(posterTarget) === id
+    ? posterTarget : doc.querySelector(selector);
   if (!el) return;
   el.classList.add('paper-reel-flash');
   if (posterHookIdentityMatches(posterHookState, doc)) {
